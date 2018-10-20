@@ -19,22 +19,18 @@ First you need to install the `ONVAULT` utility, by adding the following stateme
 ```Dockerfile
 # installs Dockito Vault ONVAULT utility
 # https://github.com/dockito/vault
-RUN apt-get update -y && \
-    apt-get install -y curl && \
-    curl -L https://raw.githubusercontent.com/dockito/vault/master/ONVAULT > /usr/local/bin/ONVAULT && \
-    chmod +x /usr/local/bin/ONVAULT
+ADD https://raw.githubusercontent.com/dockito/vault/master/ONVAULT /usr/local/bin/ONVAULT
+RUN chmod +x /usr/local/bin/ONVAULT
 ```
 
-The script's only dependency is `curl` (being installed above).
 
 Or on Alpine Linux:
 
 ```Dockerfile
 # installs Dockito Vault ONVAULT utility
 # https://github.com/dockito/vault
-RUN apk add -Uuv bash curl && \
-    curl -L https://raw.githubusercontent.com/dockito/vault/master/ONVAULT > /usr/local/bin/ONVAULT && \
-    chmod +x /usr/local/bin/ONVAULT
+ADD https://raw.githubusercontent.com/dockito/vault/master/ONVAULT /usr/local/bin/ONVAULT
+RUN chmod +x /usr/local/bin/ONVAULT
 ```
 
 Then use it on any command that requires the private keys:
@@ -50,10 +46,8 @@ FROM node:0.10.38
 
 # installs Dockito Vault ONVAULT utility
 # https://github.com/dockito/vault
-RUN apt-get update -y && \
-    apt-get install -y curl && \
-    curl -L https://raw.githubusercontent.com/dockito/vault/master/ONVAULT > /usr/local/bin/ONVAULT && \
-    chmod +x /usr/local/bin/ONVAULT
+ADD https://raw.githubusercontent.com/dockito/vault/master/ONVAULT /usr/local/bin/ONVAULT
+RUN chmod +x /usr/local/bin/ONVAULT
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
